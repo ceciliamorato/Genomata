@@ -2,13 +2,16 @@
 
 Genomata is an application implemented with Processing, developed for the Creative Programming and Computing university course, held at Politecnico di Milano. This application spans different topics, including Music Information Retrieval (exploiting the Spotify API for Developers), Genetic Algorithms and 3D Cellular Automata and Particle Systems.
 
+## Creators
+* Cecilia Morato
+* Eleonora Landini
+* Nicoletta Brundo
+
+### Music Information Retrieval
 The Music Information Retrieval part of the project exploits the Spotify API for developers; it allows:
-
-Access to a set of playlists on Spotify;
-
-Access to the tracks in these playlists;
-
-To extract a set of audio features for each track.
+* Access to a set of playlists on Spotify;
+* Access to the tracks in these playlists;
+* To extract a set of audio features for each track.
 
 ![image](https://user-images.githubusercontent.com/36270086/139530079-237ebe9e-0614-4b6c-a266-43470428221b.png)
 ![image](https://user-images.githubusercontent.com/36270086/139530108-7e4d578e-7d7f-4166-a9fd-4afa14ff2ae0.png)
