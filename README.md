@@ -30,6 +30,74 @@ In addition to the features extracted from Spotify, we also used 3 other paramet
 * Centroid.     
 
 These features are extracted using the Processing library called Minim. 
+## Genetic Algorithm
+The goal of the Genetic Algorithm is to provide the user new sets of songs, according to the previous choices.
+For each track:
+
+* **Genotype**: an array of length 6, containing float numbers;
+* **Genes**: each single element of the genotype. These float numbers represent the values of the 6 features gathered from the track;
+* **Phenotype**: the song itself, as represented by the 6 features extracted using the API;
+* **Fitness Function**: the amount of time the user spends listening to each track in the population.
+
+Functioning: 
+
+1. [**start**] The initial population is chosen by randomly selecting 10 songs from the tracks in our playlists;
+1. [**fitness**] The fitness function is computed for every track in the population.
+1. [**new population**] A new population is generated, by applying the next steps until the population is completed:
+    1.  [selection] Parents are selected according to their fitness function: the more the song has been listened to, the higher the fitness function, the higher the probability of that song to be selected as a parent for the generation of a new child;
+    2.  [crossover] The new child is the result of the crossover between the two selected parents: since we are using track’s  features as genes, we use an arithmetic  	crossover function, which generates the new child song 	by computing the arithmetic mean of each of the 	parents’ features;
+    3.  [mutation]  To introduce some variability into the new 	population, mutation is performed. In this case, since we are working with real values, mutation consists in 	adding/subtracting a small number to each gene of the 	new child, with a defined (small) mutation probability.
+
+## Cellular Automata
+
+The main components of the 3D cellular automata are:
+* **Grid**: the grid has dimensions 36x36x36 in the (x,y,z) coordinates and each element is a Cell object. Cells are boxes, and each one of them is associated to a state value;
+* **Rules**: rules are generated and then applied to every cell whose state is zero, in order to generate its next state value. The generation of new state values depends on the number of neighbours of each of these cells;
+* **Threads**: the growth and disruption of the cellular automata are governed by two distinguished threads, that call on the increase() and decrease() methods, checking the dimension of the current generation automata.
+
+### Mapping
+The features extracted from Spotify control some characteristics of the automata: 
+
+* **Thread’s delay time**: the threads act with a delay time that is proportional to the Tempo feature of the song that is currently played;
+* **Initial state**: there are 10 possible initial state configurations, and the selection among these depends on the acousticness value of the selected song.
+* **Rotation**: rotation of the automata (through the means of the camera) is regulated by the instantaneous values of energy, thus meaning that higher energy values correspond to faster rotations and viceversa;
+* **Growth**: the growth of the automata changes depending on the instantaneous entropy values of the current song, meaning that more chaotic tracks are more suitable to grow faster than slower tracks.
+* **Colour (HSB colour mode)**:
+    * the _hue_ value depends on the valence;
+    * the _saturation_ value is regulated by the loudness and by the cell’s state value;
+    * the _brightness_ value is controlled by the danceability parameter and by the cell’s state value;
+    * the _transparency_ factor depends on the energy value, thus meaning that more energic tracks are associated to opaquer colours, while low-energy songs are associated to more transparent ones.
+
+## Particle System
+
+The particle system is controlled by the instantaneous features extracted from the spectrum of each track. In particular:
+
+* The **location on the x axis** of each particle depends on the _energy_; if the instantaneous energy of the track reaches the maximum level, the location on the x axis increases towards the edges of the screen with an energy sprint;
+* The **velocity on the x axis** depends on the instantaneous _entropy_ of the track;
+* The **acceleration on the x axis** depends on the _energy_ value;
+* The **location on the y axis** depends on the _instantaneous centroid_ of the current track, mapped over (0, height), and all the particles of the system move towards its position;
+* The _centroid_ value is also used to control the **brilliance** of the particles.
+
+## Message Exchange
+The project is developed in Processing and Python: these two languages communicate using the OSC protocol. 
+
+* Processing as client: it sends a Token and the chosen playlists’ IDs, in order to gain access to them, and then obtains from Python the features extracted from the tracks in the selected playlists;
+* Python as server: starts and listens forever on port 6449; it then sends data back to Processing, who’s listening on port 6448.
+
+## GUI
+<p align="center"><img src=https://user-images.githubusercontent.com/36270086/139531825-6c897049-b48d-469b-95c4-1d718fe780ca.png></p> 
+1. Copy-paste the token, acquired from the [Spotify for Developers API](https://developer.spotify.com/console/get-playlist-tracks/?playlist_id=&market=&fields=&limit=&offset=), by clicking on the first button;
+
+<!-- ![image](https://user-images.githubusercontent.com/36270086/139531825-6c897049-b48d-469b-95c4-1d718fe780ca.png) -->
+
+
+<p align="center"><img src=https://user-images.githubusercontent.com/36270086/139531864-27a14fb7-5002-4b5e-a8a7-9951beb43e0d.png></p>
+
+<p align="center"><img src=https://user-images.githubusercontent.com/36270086/139531737-45a4d253-7478-4266-83d9-c44991a1a713.png></p>
+
+
+
+
 
 
 <!-- ![image](https://user-images.githubusercontent.com/36270086/139530108-7e4d578e-7d7f-4166-a9fd-4afa14ff2ae0.png) -->
