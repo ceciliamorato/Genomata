@@ -90,20 +90,22 @@ The project is developed in Processing and Python: these two languages communica
 
 1. Copy-paste the token, acquired from the [Spotify for Developers API](https://developer.spotify.com/console/get-playlist-tracks/?playlist_id=&market=&fields=&limit=&offset=), by clicking on the first button.
 <p align="center"><img src=https://user-images.githubusercontent.com/36270086/139531825-6c897049-b48d-469b-95c4-1d718fe780ca.png></p> 
-These checkboxes need to be selected for the application to function correctly:
+These checkboxes need to be selected for the correct functioning of the application:
 <p align="center"><img src=https://user-images.githubusercontent.com/36270086/139531864-27a14fb7-5002-4b5e-a8a7-9951beb43e0d.png></p>
-2. Copy-paste the URI of the Spotify playlist that you want to use just by clicking on one of the corresponding buttons. <p align="center"><img src=https://user-images.githubusercontent.com/36270086/139534374-f96ca213-8fe1-4114-b2ca-46b604a1bcae.png></p>
+2. Copy-paste the URI of the Spotify playlist that you want to use just by clicking on one of the corresponding buttons following these instructions. <p align="center"><img src=https://user-images.githubusercontent.com/36270086/139534374-f96ca213-8fe1-4114-b2ca-46b604a1bcae.png></p>
 3. Start loading the songs by clicking on the <i>Start loading</i> button.
 
 ### Main GUI of the Application
 <p align="center"><img src=https://user-images.githubusercontent.com/36270086/139530108-7e4d578e-7d7f-4166-a9fd-4afa14ff2ae0.png></p>
-Initial random population of songs; click on one of them to here it play and visualize the automata; double click on a song to pause it.
+Initial random population of songs.
 
-1.
+* Click on one of them to play it and visualize the automata, click again on the song to pause it. On the left is shown the fitness value for each song, corresponding to the number of second it's been listened to
 <p align="center"><img src=https://user-images.githubusercontent.com/36270086/139534608-3240fc68-0f2c-4b77-94f1-4022ea64e83c.png></p>
 
 <!-- ![image](https://user-images.githubusercontent.com/36270086/139542547-3f933dd6-1726-4199-978f-0e48a756c155.png) -->
 
+* Click on the first button to generate the new population, according to the current songs’ fitness function
+* Click on the second button to start again from a randomly generated population
 
 <p align="center"><img src=https://user-images.githubusercontent.com/36270086/139554812-1a1b7201-aa6c-4fe0-bc03-17ea138b23f0.png></p>
 
